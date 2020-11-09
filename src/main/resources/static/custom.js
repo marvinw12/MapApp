@@ -1,7 +1,34 @@
 let map;
+let coords = {lat: 35.335214, lng: -80.854023};
+let marker;
+
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 41.844167, lng: -72.741389},
-    zoom: 10
+
+    console.log(google);
+
+    let contentString = "<h2>Charlotte, NC</h2> <p>The Queen City</p>";
+    let infoWindow =new google.maps.InfoWindow({
+        content: contentString
+    })
+
+    let image = {
+        url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/basketball-1470427-1243825.png",
+        scaledSize: new google.maps.Size(50, 50)};
+
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: coords,
+    zoom: 10,
+    scrollwheel: false,
   });
+
+    marker = new google.maps.Marker( {
+      position: coords,
+      map: map,
+      icon: image,
+      animation: google.maps.Animation.DROP,
+  })
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.open(map,marker);
+})
 }
