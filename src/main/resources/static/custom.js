@@ -1,12 +1,12 @@
 let map;
-let coords = {lat: 35.335214, lng: -80.854023};
+// let coords = {lat: 35.335214, lng: -80.854023};
 let marker;
 
 function initMap() {
 
     console.log(google);
 
-    let contentString = "<h2>Charlotte, NC</h2> <p>The Queen City</p>";
+    let contentString = '<h2>' + city + ', ' + state + '</h2>';
     let infoWindow =new google.maps.InfoWindow({
         content: contentString
     })
